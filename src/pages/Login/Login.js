@@ -1,32 +1,72 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
 
 //CSS
 import styles from "./Login.module.css";
 
-//Hooks
-import { useEffect } from "react";
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [isPasswordVisible, setPasswordVisible] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [isPasswordVisible, setPasswordVisible] = useState(true);
+
+  const navigate = useNavigate();
 
   const togglePasswordVisible = () => {
     setPasswordVisible(!isPasswordVisible);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    const newErrors = validateForm();
+    if (Object.keys(newErrors).length === 0) {
+      console.log("O formulário está 100% válido!");
+      setErrors("");
+      setEmail("");
+      setPassword("");
 
-    console.log("clicou");
+      navigate("/");
+
+      console.log(email, password);
+    } else {
+      setErrors(newErrors); // Alterado para setErrors
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    switch (true) {
+      case !email:
+        newErrors.email = "O email é obrigatório.";
+        break;
+      case !checkEmail(email):
+        newErrors.email = "Insira um email válido.";
+    }
+
+    switch (true) {
+      case !password:
+        newErrors.password = "A senha é obrigatória.";
+        break;
+      case password.length < 7:
+        newErrors.password = "A senha precisa de no mínimo 7 caracteres.";
+    }
+
+    return newErrors;
+  };
+
+  const checkEmail = (email) => {
+    const re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
   };
 
   useEffect(() => {
-    if (error) {
-      setError(error);
+    if (errors) {
+      setErrors(errors);
     }
-  }, [error]);
+  }, [errors]);
 
   return (
     <div className={styles.login}>
@@ -41,6 +81,7 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {errors.email && <p className="error">{errors.email}</p>}
         </label>
 
         <label>
@@ -52,8 +93,10 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          {errors.password && <p className="error">{errors.password}</p>}
         </label>
-        <button onClick={togglePasswordVisible}>
+
+        <button type="button" onClick={togglePasswordVisible}>
           {isPasswordVisible ? (
             <span>Mostrar senha</span>
           ) : (
@@ -61,9 +104,9 @@ const Login = () => {
           )}
         </button>
 
-        <button className="btn">Entrar</button>
-
-        {error && <p className="error">{error}</p>}
+        <button className="btn" type="submit">
+          Entrar
+        </button>
       </form>
     </div>
   );
