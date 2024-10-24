@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-
+//Hooks
 import { useNavigate } from "react-router-dom";
 
 //CSS
 import styles from "./Login.module.css";
+import { Eye, EyeSlash } from "phosphor-react";
+import FormControl from "../../components/FormControl";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +15,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  //Muda o estado da senha
   const togglePasswordVisible = () => {
     setPasswordVisible(!isPasswordVisible);
   };
@@ -30,10 +33,10 @@ const Login = () => {
 
       console.log(email, password);
     } else {
-      setErrors(newErrors); // Alterado para setErrors
+      setErrors(newErrors);
     }
   };
-
+  //Válidação do formulário
   const validateForm = () => {
     const newErrors = {};
 
@@ -49,17 +52,31 @@ const Login = () => {
       case !password:
         newErrors.password = "A senha é obrigatória.";
         break;
-      case password.length < 7:
-        newErrors.password = "A senha precisa de no mínimo 7 caracteres.";
+      case password.length < 8:
+        newErrors.password = "A senha precisa de no mínimo 8 caracteres.";
     }
 
     return newErrors;
   };
-
+  //Checa se o email digitado é válido
   const checkEmail = (email) => {
     const re =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
+  };
+  //Reseta os erros se não tiver nenhum
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    if (errors.email) {
+      setErrors({ ...errors, email: "" });
+    }
+  };
+  //Reseta os erros se não tiver nenhum
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    if (errors.password) {
+      setErrors({ ...errors, password: "" });
+    }
   };
 
   useEffect(() => {
@@ -72,39 +89,37 @@ const Login = () => {
     <div className={styles.login}>
       <h2>Entre na sua conta</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input
-            type="text"
-            placeholder="Seu email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {errors.email && <p className="error">{errors.email}</p>}
-        </label>
+        <FormControl
+          id="email"
+          label="Email"
+          type="text"
+          value={email}
+          onChange={handleEmailChange}
+          error={errors.email}
+        />
+        <FormControl
+          id="password"
+          label="Senha"
+          type={isPasswordVisible ? "text" : "password"}
+          value={password}
+          onChange={handlePasswordChange}
+          error={errors.password}
+          button={
+            <button
+              type="button"
+              onClick={togglePasswordVisible}
+              className={styles.passwordToggle}
+            >
+              {isPasswordVisible ? (
+                <Eye color="black" />
+              ) : (
+                <EyeSlash color="black" />
+              )}
+            </button>
+          }
+        />
 
-        <label>
-          Senha:
-          <input
-            type={isPasswordVisible ? "password" : "text"}
-            placeholder="Sua senha"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {errors.password && <p className="error">{errors.password}</p>}
-        </label>
-
-        <button type="button" onClick={togglePasswordVisible}>
-          {isPasswordVisible ? (
-            <span>Mostrar senha</span>
-          ) : (
-            <span>Esconder senha</span>
-          )}
-        </button>
-
-        <button className="btn" type="submit">
+        <button className={styles.btn} type="submit">
           Entrar
         </button>
       </form>
