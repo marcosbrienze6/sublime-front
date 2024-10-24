@@ -1,27 +1,55 @@
 /* Navbar.module.css */
+
 .navbar {
-  background-color: #333;
-  padding: 10px 20px;
   display: flex;
-  margin: 0;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
 }
 
 .navbar h1 {
-  color: white;
-  font-size: 24px;
   margin: 0;
 }
 
 .navbar a {
-  color: white;
+  margin: 0 10px;
   text-decoration: none;
-  margin-left: 20px;
-  font-size: 16px;
+  color: white;
 }
 
-.navbar a:hover {
-  color: #007bff;
-  text-decoration: underline;
+.modal {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modalContent {
+  display: block;
+  flex-direction: column; /* Faz com que os botões fiquem um embaixo do outro */
+}
+.modalContent h2 {
+  color: black;
+}
+
+.modalContent button {
+  background-color: #333;
+  color: white;
+  border: none;
+
+  display: block;
+  padding: 10px;
+  margin: 5px 0; /* Adiciona espaço entre os botões */
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.modalContent button:hover {
+  background-color: #555;
 }

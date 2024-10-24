@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 //CSS
 import styles from "./Register.module.css";
+import { Eye, EyeSlash } from "phosphor-react";
+import FormControl from "../../components/FormControl";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -38,14 +40,6 @@ const Register = () => {
     } else {
       setErrors(newErrors);
     }
-
-    // let uploadedPhotoURL = photoURL;
-
-    // if (imageFile) {
-    //   const storageRef = ref(storage, `profileImages/${user.uid}`);
-    //   await uploadBytes(storageRef, imageFile);
-    //   uploadedPhotoURL = await getDownloadURL(storageRef);
-    // }
   };
 
   const validateForm = () => {
@@ -82,14 +76,7 @@ const Register = () => {
     return newErrors;
   };
 
-  const handleImageURL = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImageFile(file);
-      setPhotoURL(URL.createObjectURL(file));
-    }
-  };
-
+  //Checa se o email digitado é válido
   const checkEmail = (email) => {
     const re =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -99,6 +86,35 @@ const Register = () => {
   const closeLabel = (e) => {
     e.preventDefault();
     setPhotoURL(false);
+  };
+
+  //Reseta os erros se não tiver nenhum
+  const handleUsernameChange = (e) => {
+    setName(e.target.value);
+    if (errors.username) {
+      setErrors({ ...errors, username: "" });
+    }
+  };
+  //Reseta os erros se não tiver nenhum
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    if (errors.email) {
+      setErrors({ ...errors, email: "" });
+    }
+  };
+  //Reseta os erros se não tiver nenhum
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    if (errors.password) {
+      setErrors({ ...errors, password: "" });
+    }
+  };
+  //Reseta os erros se não tiver nenhum
+  const handlePasswordConfirmationChange = (e) => {
+    setConfirmPassword(e.target.value);
+    if (errors.confirmPassword) {
+      setErrors({ ...errors, confirmPassword: "" });
+    }
   };
 
   useEffect(() => {
@@ -111,78 +127,52 @@ const Register = () => {
     <div className={styles.register}>
       <h2>Entre na sua conta</h2>
       <form onSubmit={handleSubmit}>
-        {/* NOME */}
-        <label>
-          Nome:
-          <input
-            type="text"
-            placeholder="Seu nome"
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          {errors.name && <p className="error">{errors.name}</p>}
-        </label>
-        {/* EMAIL */}
-        <label>
-          Email:
-          <input
-            type="text"
-            placeholder="Seu email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {errors.email && <p className="error">{errors.email}</p>}
-        </label>
-        {/* SENHA */}
-        <label>
-          Senha:
-          <input
-            type={isPasswordVisible ? "password" : "text"}
-            placeholder="Sua senha"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {errors.password && <p className="error">{errors.password}</p>}
-        </label>
-        {/* CONFIRMAR SENHA */}
-        <label>
-          Confirmar Senha:
-          <input
-            type={isPasswordVisible ? "password" : "text"}
-            placeholder="Confirme sua senha"
-            required
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          {errors.confirmPassword && (
-            <p className="error">{errors.confirmPassword}</p>
-          )}
-        </label>
+        <FormControl
+          id="username"
+          label="Nome de usuário"
+          type="text"
+          value={name}
+          onChange={handleUsernameChange}
+          error={errors.name}
+        />
+        <FormControl
+          id="email"
+          label="Email"
+          type="text"
+          value={email}
+          onChange={handleEmailChange}
+          error={errors.email}
+        />
+        <FormControl
+          id="password"
+          label="Senha"
+          type={isPasswordVisible ? "text" : "password"}
+          value={password}
+          onChange={handlePasswordChange}
+          error={errors.password}
+        />
+        <FormControl
+          id="password-confirmation"
+          label="Confirmação de senha"
+          type={isPasswordVisible ? "text" : "password"}
+          value={confirmPassword}
+          onChange={handlePasswordConfirmationChange}
+          error={errors.confirmPassword}
+          button={
+            <button
+              type="button"
+              onClick={togglePasswordVisible}
+              className={styles.passwordToggle}
+            >
+              {isPasswordVisible ? (
+                <Eye color="black" />
+              ) : (
+                <EyeSlash color="black" />
+              )}
+            </button>
+          }
+        />
 
-        <button type="button" onClick={togglePasswordVisible}>
-          {isPasswordVisible ? (
-            <span>Mostrar senha</span>
-          ) : (
-            <span>Esconder senha</span>
-          )}
-        </button>
-
-        {/* ADICIONAR FOTO */}
-        {/* <input type="file" onChange={handleImageURL} accept="image/*" />
-
-        {photoURL && (
-          <div className={styles.user_image}>
-            <span>Sua foto atual:</span>
-            <img
-              src={photoURL}
-              alt="Selected"
-              style={{ width: 150, height: 150, borderRadius: 500 }}
-            />
-          </div>
-        )} */}
         {photoURL && (
           <>
             Quer adicionar uma foto?
@@ -193,7 +183,7 @@ const Register = () => {
           </>
         )}
 
-        <button className="btn" type="submit">
+        <button className={styles.btn} type="submit">
           Cadastrar
         </button>
       </form>

@@ -2,3 +2,10 @@
   margin: 0;
   padding: 0;
 }
+
+.btn {
+  padding: 0.5em;
+  background-color: #ccc;
+  color: black;
+  border-radius: 20px;
+}

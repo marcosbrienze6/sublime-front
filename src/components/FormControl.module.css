@@ -1,0 +1,36 @@
+.formControl {
+  margin-bottom: 1rem;
+}
+
+.formControl label {
+  color: rgb(0, 0, 0);
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.inputWrapper input {
+  padding-right: 2.5rem; /* Espaço para o botão */
+  width: 100%;
+  padding: 7px;
+  border-radius: 4px;
+}
+
+.inputButton {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.inputError {
+  border-color: red;
+}
+
+.error {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
