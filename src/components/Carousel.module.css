@@ -1,0 +1,63 @@
+.carousel {
+  position: relative;
+  width: 1300px;
+  border-radius: 20px;
+  margin: 2em auto;
+  overflow: hidden;
+}
+
+.imageContainer {
+  display: flex; /* As imagens ficam lado a lado */
+  transition: transform 0.5s ease-in-out; /* Controla a transição de deslizamento */
+  width: 100%;
+}
+
+.image {
+  width: 1300px;
+  height: 400px;
+  min-width: 100%; /* Para que cada imagem ocupe 100% da largura do container */
+}
+
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 30px;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.prevButton {
+  left: 10px;
+}
+
+.nextButton {
+  right: 10px;
+}
+
+.dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 70px;
+  height: 3px;
+
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #333;
+}
