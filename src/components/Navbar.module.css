@@ -1,55 +1,122 @@
 /* Navbar.module.css */
 
 .navbar {
+  background-color: #ade0db;
+  padding: 0;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background-color: #333;
-  color: #fff;
+
+  align-items: center;
+  height: 100px;
+  font-family: "Poppins", sans-serif;
 }
 
 .navbar h1 {
-  margin: 0;
+  color: black;
+  margin-left: 5em;
+  margin-right: 7em;
 }
 
 .navbar a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: white;
-}
-
-.modal {
-  position: absolute;
-  top: 50px;
-  right: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 20px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.modalContent {
+  float: inline-end;
   display: block;
-  flex-direction: column; /* Faz com que os botões fiquem um embaixo do outro */
+  color: black;
+  text-align: center;
+  padding: 5px 10px;
+  text-decoration: none;
 }
-.modalContent h2 {
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+h5 {
+  color: black;
+  text-align: center;
+}
+
+.navbar input {
+  margin-right: 2em;
+  margin-left: 15em;
+}
+
+.navbarItem span {
+  font-size: 15px;
   color: black;
 }
 
+.navbarItemSign {
+  margin-left: 5em;
+}
+
+.searchInpt {
+  border-radius: 5px;
+  padding: 6px 8px;
+  border: 2px solid #d9dbdb;
+}
+
+.botao {
+  background: none;
+  margin-left: -1em;
+  margin-right: 1em;
+  border: none;
+}
+
+.inputIcon {
+  margin-right: -230px;
+  margin-left: 200px;
+}
+
+.inputIcon:hover {
+  cursor: pointer;
+}
+
+/* Container do modal */
+.modal {
+  overflow: hidden;
+  max-height: 0; /* inicia fechado */
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  background-color: #ade0db;
+
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal.open {
+  max-height: 300px; /* ajusta para acomodar seu conteúdo */
+
+  opacity: 1;
+}
+
 .modalContent button {
-  background-color: #333;
-  color: white;
+  background-color: #fff;
+  color: black;
   border: none;
 
   display: block;
   padding: 10px;
-  margin: 5px 0; /* Adiciona espaço entre os botões */
+  margin: 5px 0;
   cursor: pointer;
   border-radius: 3px;
 }
 
 .modalContent button:hover {
-  background-color: #555;
+  background-color: #ccc;
+}
+
+.options {
+  color: black;
+  padding: 15px;
+  margin-left: 17em;
+  border-radius: 50%;
+  border: none;
+}
+
+.options:hover {
+  cursor: pointer;
 }

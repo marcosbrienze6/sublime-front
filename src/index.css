@@ -3,9 +3,34 @@
   padding: 0;
 }
 
+body {
+  background-color: #ebf2f2;
+}
+
 .btn {
   padding: 0.5em;
   background-color: #ccc;
   color: black;
   border-radius: 20px;
+}
+
+.celular {
+  background-color: #ade0db;
+  padding: 2em;
+  border-radius: 10px;
+  width: 80px;
+  margin-left: 3.4em;
+  transition: 0.2s ease-in-out;
+}
+
+.celular:hover {
+  transform: scale(1.1);
+  border-radius: 510px;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  margin-left: 8em;
+  margin-top: 2em;
 }

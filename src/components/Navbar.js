@@ -4,12 +4,23 @@ import styles from "./Navbar.module.css";
 
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { Bell, Bag, UserCircle, Gear, SignOut } from "phosphor-react";
+import {
+  MagnifyingGlass,
+  ShoppingBagOpen,
+  ShoppingCart,
+  Gear,
+  SignOut,
+  UserCircle,
+  Bell,
+  Bag,
+} from "phosphor-react";
 
 const Navbar = () => {
   const navigate = useNavigate();
 
   const [modalOpen, setModalOpen] = useState(false);
+
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleModal = () => {
     setModalOpen(!modalOpen);
@@ -22,37 +33,72 @@ const Navbar = () => {
 
   return (
     <div className={styles.navbar}>
-      <h1>Sublime</h1>
-      <NavLink to={"/"}>Home</NavLink>
-      <NavLink to={"/login"}>Login</NavLink>
-      <NavLink to={"/register"}>Register</NavLink>
-      <NavLink>
-        <button onClick={handleModal}>Eu{modalOpen ? "" : ""}</button>
+      <div className={styles.navbar}>
+        <h1 className={styles.navbarItem}>
+          Sublime <span>Ⓡ</span>
+        </h1>
+        <NavLink to="/" className={styles.navbarItem}>
+          Home
+        </NavLink>
+        <NavLink to="/shop" className={styles.navbarItem}>
+          Shop
+        </NavLink>
+        <NavLink to="/vender" className={styles.navbarItem}>
+          Vender
+        </NavLink>
 
-        {modalOpen && (
-          <div className={styles.modal}>
-            <div className={styles.modalContent}>
-              <h2>Eai dog</h2>
-              <NavLink to={"/profile"}>
-                <button onClick={goToProfile}>
-                  <UserCircle color="orange" /> Ver meu perfil
-                </button>
-                <button onClick={goToProfile}>
-                  <Bell color="orange" /> Mensagens
-                </button>
-                <button onClick={goToProfile}>
-                  <Bag color="orange" /> Minhas compras
-                </button>
-                <button onClick={goToProfile}>
-                  <Gear color="orange" /> Configurações
-                </button>
-                <button onClick={goToProfile}>
-                  <SignOut color="orange" /> Sair
-                </button>
-              </NavLink>
-            </div>
+        <input
+          className={styles.searchInpt}
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Pesquise por algo"
+        />
+        <button className={styles.botao} type="submit">
+          <MagnifyingGlass size={30} color="black" />
+        </button>
+
+        <NavLink to={"/vender"}>
+          <ShoppingBagOpen color="black" size={30} />
+        </NavLink>
+
+        <NavLink to={"/carrinho"}>
+          <ShoppingCart size={30} />
+        </NavLink>
+        <NavLink to="/login" className={styles.navbarItemSign}>
+          Entrar
+        </NavLink>
+        <NavLink to="/register" className={styles.navbarItem}>
+          Registrar
+        </NavLink>
+      </div>
+      <NavLink>
+        <button className={styles.options} onClick={handleModal}>
+          Eu{modalOpen ? "" : ""}
+        </button>
+
+        <div className={`${styles.modal} ${modalOpen ? styles.open : ""}`}>
+          <div className={styles.modalContent}>
+            <h2>Eai dog</h2>
+            <NavLink to={"/profile"}>
+              <button>
+                <UserCircle /> Ver meu perfil
+              </button>
+              <button>
+                <Bell /> Mensagens
+              </button>
+              <button>
+                <Bag /> Minhas compras
+              </button>
+              <button>
+                <Gear /> Configurações
+              </button>
+              <button>
+                <SignOut /> Sair
+              </button>
+            </NavLink>
           </div>
-        )}
+        </div>
       </NavLink>
     </div>
   );
