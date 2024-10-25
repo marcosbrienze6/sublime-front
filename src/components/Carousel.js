@@ -2,23 +2,26 @@ import React, { useState, useEffect } from "react";
 import styles from "./Carousel.module.css";
 
 // Importe as imagens locais
-import image1 from "../assets/FOTO_LINKEDIN.png";
+
 import image2 from "../assets/felipaocarecasso.png";
-import image3 from "../assets/muielinda.png";
+
+import image4 from "../assets/PHOTO_1.png";
+import image5 from "../assets/PHOTO_2.png";
+import image6 from "../assets/PHOTO_3.png";
 
 import { CaretRight, CaretLeft } from "phosphor-react";
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const images = [image1, image2, image3];
+  const images = [image2, image4, image5, image6];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 9000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [images.length]);

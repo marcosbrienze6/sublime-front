@@ -1,0 +1,31 @@
+.midSection {
+  margin: 4em 13em;
+}
+
+.filters {
+  display: flex;
+}
+
+.filters h3 {
+  margin: 1.5em 0.5em;
+}
+
+.filters h3:active {
+  border-bottom: 1px solid blue;
+}
+
+.options {
+  display: flex;
+}
+
+.options p {
+  margin: 0.5em;
+  border: 1px solid #a1a1a1;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.options p:hover {
+  background-color: #e2e4e6;
+  cursor: pointer;
+}
