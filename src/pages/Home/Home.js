@@ -2,8 +2,13 @@ import React from "react";
 
 import Carousel from "../../components/Carousel";
 
+//Router
 import { Link } from "react-router-dom";
 
+//CSS
+import styles from "./Home.module.css";
+
+//Icons
 import {
   DeviceMobile,
   Lamp,
@@ -12,7 +17,14 @@ import {
   Basketball,
   TShirt,
 } from "phosphor-react";
+
+//Hooks
+import useFetchData from "../../hooks/useFetchData";
+import Products from "../../components/Products";
+
 const Home = () => {
+  // const { data: products, loading, error } = useFetchData();
+
   return (
     <div>
       <Carousel />
@@ -46,6 +58,29 @@ const Home = () => {
           <TShirt size={50} />
           <span>Moda</span>
         </h2>
+      </div>
+      <div className={styles.midSection}>
+        <h1>Dê uma olhada no que está em alta</h1>
+        <div className={styles.filters}>
+          <h3>Mais buscados</h3>
+          <h3>Em alta</h3>
+          <h3>Mais recentes</h3>
+        </div>
+        <div className={styles.options}>
+          <p>Móveis</p>
+          <p>Calçados</p>
+          <p>Carros</p>
+          <p>Celulares</p>
+        </div>
+        <div className={styles.products_Container}>
+          <Products />
+          {/* {products &&
+            products.map((product) => (
+              <>
+                <p>{product.name}</p>
+              </>
+            ))} */}
+        </div>
       </div>
     </div>
   );
