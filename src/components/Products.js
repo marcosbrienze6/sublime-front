@@ -1,7 +1,7 @@
 // src/components/Products.js
 import React from "react";
 
-function Products({ product }) {
+function Products({ products }) {
   return (
     <div style={styles.card}>
       {/* <img src={product.image} alt={product.name} style={styles.image} /> */}
