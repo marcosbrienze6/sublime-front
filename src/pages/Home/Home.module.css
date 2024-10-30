@@ -54,6 +54,25 @@
   display: flex;
 }
 
+.createAccount button {
+  padding: 1em;
+  border-radius: 3px;
+  background-color: #ade0db;
+  border: none;
+}
+
+.createAccount button:hover {
+  cursor: pointer;
+  background-color: #c6dfdc;
+}
+
+.spanOptions {
+  display: flex;
+  margin: 1.5em;
+  justify-content: center;
+  align-items: center;
+}
+
 /* ---LOWER SECTION--- */
 
 .lowerSection {

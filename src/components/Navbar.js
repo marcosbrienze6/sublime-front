@@ -16,6 +16,8 @@ import {
 } from "phosphor-react";
 import Login from "./Login";
 
+import image from "../assets/felipaocarecasso.png";
+
 const Navbar = () => {
   const navigate = useNavigate();
 
@@ -23,6 +25,8 @@ const Navbar = () => {
   const [loginModalOpen, setLoginModalOpen] = useState(false);
 
   const [searchQuery, setSearchQuery] = useState("");
+
+  const images = [image];
 
   const handleModal = () => {
     setModalOpen(!modalOpen);
@@ -94,6 +98,7 @@ const Navbar = () => {
                 loginModalOpen ? styles.openLogin : ""
               }`}
             >
+              <img width={350} height={500} src={image} />
               <Login closeModal={closeModal} />
             </div>
           </>

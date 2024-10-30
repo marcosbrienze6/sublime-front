@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 //Hooks
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 //CSS
 import styles from "./Login.module.css";
@@ -123,6 +123,20 @@ const Login = ({ closeModal }) => {
         <button className={styles.btn} type="submit">
           Entrar
         </button>
+
+        <p className={styles.separation}>Ou entre com</p>
+        <div className={styles.socialMedia}>
+          <div className={styles.google}>
+            <button>Google</button>
+          </div>
+
+          <div className={styles.facebook}>
+            <button>Facebook</button>
+          </div>
+          <div className={styles.apple}>
+            <button>Apple</button>
+          </div>
+        </div>
       </form>
     </div>
   );

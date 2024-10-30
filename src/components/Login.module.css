@@ -1,6 +1,9 @@
 /* Login.module.css */
 .login {
   text-align: center;
+  margin-left: 1em;
+
+  font-family: Nunito;
 }
 
 .login h2 {
@@ -53,17 +56,10 @@
 }
 
 .login button {
-  margin-top: 10px;
   background: none;
   border: none;
-  color: #007bff;
+  padding: 5px;
   cursor: pointer;
-  font-size: 14px;
-  text-decoration: underline;
-}
-
-.login button:hover {
-  color: #ffffff;
 }
 
 .login .error {
@@ -71,4 +67,40 @@
   margin-top: 10px;
   font-size: 14px;
   text-align: center;
+}
+
+.separation {
+  margin: 0.5em;
+  color: black;
+}
+
+.socialMedia {
+  margin-top: 1em;
+}
+
+.google,
+.facebook,
+.apple {
+  text-decoration: none;
+  width: 200px;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 2px;
+  padding: 3px;
+}
+
+.google:hover {
+  background-color: rgb(224, 97, 51);
+  cursor: pointer;
+}
+
+.facebook:hover {
+  background-color: #4c9df3;
+  cursor: pointer;
+}
+
+.apple:hover {
+  background-color: #555;
+  cursor: pointer;
 }
