@@ -9,9 +9,15 @@ import {
   GameController,
   Basketball,
   TShirt,
+  FacebookLogo,
+  TwitchLogo,
+  InstagramLogo,
+  YoutubeLogo,
 } from "phosphor-react";
 import useFetchData from "../../hooks/useFetchData";
 import Products from "../../components/Products";
+
+import Footer from "../../components/Footer";
 
 import image1 from "../../assets/PhoneIMG.png";
 
@@ -124,9 +130,28 @@ const Home = () => {
             ))} */}
         </div>
       </div>
+      <div className={styles.createAccount}>
+        <h2>Crie sua conta na Sublime gratuitamente e aproveite 100%</h2>
+        <div className={styles.ooptin}>
+          <p>
+            Anuncie grátis e desapegue de produtos, autos e imóveis sem pagar
+            nada
+          </p>
+          <p>
+            Negocie com compradores e vendedores através do chat OLX e
+            previna-se de golpes
+          </p>
+          <p>Favorite as ofertas que você mais curtiu</p>
+          <p>
+            Enviamos recomendações personalizadas para te ajudar a encontrar o
+            apego perfeito
+          </p>
+        </div>
+      </div>
       <div className={styles.lowerSection}>
+        {/* TECNOLOGIA */}
         <p>Eletrônicos e Celulares</p>
-        <h1>Entretenimento e Trabalho</h1>
+        <h2>Entretenimento e Trabalho</h2>
         <div className={styles.eletronicsOptions}>
           <div className={styles.eletronic}>
             <img src={image1} />
@@ -148,7 +173,33 @@ const Home = () => {
             <p>Câmeras e Drones</p>
           </div>
         </div>
+
+        {/* VEÍCULOS */}
+        <p>Autos</p>
+        <h2>Os melhores veículos</h2>
+        <div className={styles.eletronicsOptions}>
+          <div className={styles.eletronic}>
+            <img src={image1} />
+            <p>Carros</p>
+          </div>
+
+          <div className={styles.eletronic}>
+            <img src={image1} />
+            <p>Caminhões</p>
+          </div>
+
+          <div className={styles.eletronic}>
+            <img src={image1} />
+            <p>Motos</p>
+          </div>
+
+          <div className={styles.eletronic}>
+            <img src={image1} />
+            <p>Ônibus</p>
+          </div>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };

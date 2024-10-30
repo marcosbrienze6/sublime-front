@@ -41,16 +41,30 @@
   border: 1px solid blue;
 }
 
+/* CREATE ACCOUNT */
+
+.createAccount {
+  border: 1px solid black;
+  margin: 4em 13em;
+  border-radius: 5px;
+  padding: 1em;
+}
+.createAccount p {
+  color: black;
+  display: flex;
+}
+
 /* ---LOWER SECTION--- */
 
 .lowerSection {
   padding: 4em 13em;
-  background-color: #d9dbdb;
+  background-color: #e0ecec;
 }
 
 .eletronicsOptions {
   display: flex;
-  margin-top: 1em;
+  margin-top: 2em;
+  margin-bottom: 1em;
 }
 
 .eletronic {
@@ -58,9 +72,22 @@
   background-color: #ccc;
   text-align: center;
   margin: 0 0.5em;
+  transition: 0.2s ease-in-out;
+}
+
+.eletronic:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  color: black;
 }
 
 .eletronic img {
   width: 300px;
   height: 200px;
+}
+
+/* ---FOOTER SECTION--- */
+
+.footerSection {
+  margin: 4em 13em;
 }
