@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 //CSS
 import styles from "./Login.module.css";
 import { Eye, EyeSlash } from "phosphor-react";
-import FormControl from "../../components/FormControl";
+import FormControl from "./FormControl";
 
-const Login = () => {
+const Login = ({ closeModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -29,8 +29,8 @@ const Login = () => {
       setEmail("");
       setPassword("");
 
-      navigate("/");
-
+      navigate("/profile");
+      closeModal();
       console.log(email, password);
     } else {
       setErrors(newErrors);
@@ -97,6 +97,7 @@ const Login = () => {
           onChange={handleEmailChange}
           error={errors.email}
         />
+
         <FormControl
           id="password"
           label="Senha"

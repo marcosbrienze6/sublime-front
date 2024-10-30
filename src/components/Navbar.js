@@ -14,11 +14,13 @@ import {
   Bell,
   Bag,
 } from "phosphor-react";
+import Login from "./Login";
 
 const Navbar = () => {
   const navigate = useNavigate();
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
 
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -28,7 +30,16 @@ const Navbar = () => {
 
   const goToProfile = () => {
     setModalOpen(false);
+
     navigate("/profile");
+  };
+
+  const handleLoginModal = () => {
+    setLoginModalOpen(!loginModalOpen);
+  };
+
+  const closeModal = () => {
+    setLoginModalOpen(false);
   };
 
   return (
@@ -65,9 +76,29 @@ const Navbar = () => {
         <NavLink to={"/carrinho"}>
           <ShoppingCart size={30} />
         </NavLink>
-        <NavLink to="/login" className={styles.navbarItemSign}>
-          Entrar
-        </NavLink>
+
+        <button onClick={handleLoginModal} className={styles.navbarItemSign}>
+          Entrar{loginModalOpen ? "" : ""}
+        </button>
+
+        {loginModalOpen && (
+          <>
+            <div
+              className={`${styles.modalBackdrop} ${
+                loginModalOpen ? styles.openBackdrop : ""
+              }`}
+              onClick={handleLoginModal}
+            />
+            <div
+              className={`${styles.loginModal} ${
+                loginModalOpen ? styles.openLogin : ""
+              }`}
+            >
+              <Login closeModal={closeModal} />
+            </div>
+          </>
+        )}
+
         <NavLink to="/register" className={styles.navbarItem}>
           Registrar
         </NavLink>
