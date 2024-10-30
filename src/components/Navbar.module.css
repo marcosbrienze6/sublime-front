@@ -50,9 +50,9 @@ h5 {
 }
 
 .searchInpt {
-  border-radius: 5px;
+  border-radius: 30px;
   padding: 6px 8px;
-  border: 2px solid #d9dbdb;
+  border: 2px solid black;
 }
 
 .botao {
@@ -138,6 +138,8 @@ h5 {
 
 .loginModal.openLogin {
   max-height: 500px;
+  display: flex;
+  padding: 2em;
   opacity: 1;
 }
 

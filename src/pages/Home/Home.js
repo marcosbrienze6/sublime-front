@@ -13,6 +13,10 @@ import {
   TwitchLogo,
   InstagramLogo,
   YoutubeLogo,
+  CurrencyDollarSimple,
+  Chat,
+  Heart,
+  ArrowLineUpRight,
 } from "phosphor-react";
 import useFetchData from "../../hooks/useFetchData";
 import Products from "../../components/Products";
@@ -132,21 +136,16 @@ const Home = () => {
       </div>
       <div className={styles.createAccount}>
         <h2>Crie sua conta na Sublime gratuitamente e aproveite 100%</h2>
-        <div className={styles.ooptin}>
+        <div className={styles.spanOptions}>
+          <p>Anuncie grátis e desapegue de produtos, autos sem pagar nada</p>
           <p>
-            Anuncie grátis e desapegue de produtos, autos e imóveis sem pagar
-            nada
-          </p>
-          <p>
-            Negocie com compradores e vendedores através do chat OLX e
-            previna-se de golpes
+            Negocie com compradores e vendedores através do chat e previna-se de
+            golpes
           </p>
           <p>Favorite as ofertas que você mais curtiu</p>
-          <p>
-            Enviamos recomendações personalizadas para te ajudar a encontrar o
-            apego perfeito
-          </p>
+          <p>Enviamos recomendações personalizadas para te ajudar</p>
         </div>
+        <button>Crie sua conta gratuitamente</button>
       </div>
       <div className={styles.lowerSection}>
         {/* TECNOLOGIA */}
