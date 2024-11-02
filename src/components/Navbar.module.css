@@ -71,6 +71,15 @@ h5 {
   cursor: pointer;
 }
 
+.loginBtn {
+  background-color: #d0f2e7;
+  padding: 5px;
+  margin: 0 5px;
+  cursor: pointer;
+
+  border-radius: 5px;
+}
+
 /* Container do modal */
 .modal {
   overflow: hidden;

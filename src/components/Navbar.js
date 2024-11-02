@@ -81,7 +81,7 @@ const Navbar = () => {
           <ShoppingCart size={30} />
         </NavLink>
 
-        <button onClick={handleLoginModal} className={styles.navbarItemSign}>
+        <button onClick={handleLoginModal} className={styles.loginBtn}>
           Entrar{loginModalOpen ? "" : ""}
         </button>
 
