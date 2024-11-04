@@ -2,13 +2,18 @@ import React, { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
+//Components
+import Address from "../../components/Address";
+import FormControl from "../../components/FormControl";
+
 //CSS
 import styles from "./Register.module.css";
 import { Eye, EyeSlash } from "phosphor-react";
-import FormControl from "../../components/FormControl";
 
 const Register = () => {
   const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -39,6 +44,10 @@ const Register = () => {
       console.log(email, password);
     } else {
       setErrors(newErrors);
+
+      setTimeout(() => {
+        setErrors("");
+      }, 3000);
     }
   };
 
@@ -47,6 +56,14 @@ const Register = () => {
 
     if (!name) {
       newErrors.name = "O nome é obrigatório.";
+    }
+
+    if (!lastName) {
+      newErrors.lastName = "O sobrenome é obrigatório.";
+    }
+
+    if (phoneNumber.length === 0 || phoneNumber < 11) {
+      newErrors.phoneNumber = "Insira um número válido.";
     }
 
     switch (true) {
@@ -91,10 +108,27 @@ const Register = () => {
   //Reseta os erros se não tiver nenhum
   const handleUsernameChange = (e) => {
     setName(e.target.value);
-    if (errors.username) {
-      setErrors({ ...errors, username: "" });
+    if (errors.name) {
+      setErrors({ ...errors, name: "" });
     }
   };
+
+  //Reseta os erros se não tiver nenhum
+  const handleLastNameChange = (e) => {
+    setLastName(e.target.value);
+    if (errors.lastName) {
+      setErrors({ ...errors, lastName: "" });
+    }
+  };
+
+  //Reseta os erros se não tiver nenhum
+  const handlePhoneChange = (e) => {
+    setPhoneNumber(e.target.value);
+    if (errors.phoneNumber) {
+      setErrors({ ...errors, phoneNumber: "" });
+    }
+  };
+
   //Reseta os erros se não tiver nenhum
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -125,16 +159,28 @@ const Register = () => {
 
   return (
     <div className={styles.register}>
-      <h2>Entre na sua conta</h2>
-      <form onSubmit={handleSubmit}>
-        <FormControl
-          id="username"
-          label="Nome de usuário"
-          type="text"
-          value={name}
-          onChange={handleUsernameChange}
-          error={errors.name}
-        />
+      <h2>Cadastre-se agora mesmo!</h2>
+      <p>Não dura nem 5 minutos...</p>
+      <form className={styles.formContainer} onSubmit={handleSubmit}>
+        <div className={styles.namesContainer}>
+          <FormControl
+            id="username"
+            label="Nome"
+            type="text"
+            value={name}
+            onChange={handleUsernameChange}
+            error={errors.name}
+          />
+
+          <FormControl
+            id="lastname"
+            label="Sobrenome"
+            type="text"
+            value={lastName}
+            onChange={handleLastNameChange}
+            error={errors.lastName}
+          />
+        </div>
         <FormControl
           id="email"
           label="Email"
@@ -143,6 +189,18 @@ const Register = () => {
           onChange={handleEmailChange}
           error={errors.email}
         />
+        <FormControl
+          id="phone"
+          label="Celular"
+          type="tel"
+          value={phoneNumber}
+          placeholder="Ex: (12) 12345-6789"
+          pattern="[0-9]{11}"
+          onChange={handlePhoneChange}
+          error={errors.phoneNumber}
+        />
+        CEP
+        <Address />
         <FormControl
           id="password"
           label="Senha"
@@ -172,20 +230,20 @@ const Register = () => {
             </button>
           }
         />
-
-        {photoURL && (
-          <>
-            Quer adicionar uma foto?
-            <input type="file" placeholder="Confirme sua senha" />
-            <button className={styles.late_btn} onClick={closeLabel}>
-              Adicionar depois
-            </button>
-          </>
-        )}
-
-        <button className={styles.btn} type="submit">
-          Cadastrar
-        </button>
+        <div className={styles.photoContainer}>
+          {photoURL && (
+            <>
+              Quer adicionar uma foto?
+              <input type="file" placeholder="Confirme sua senha" />
+              <button className={styles.late_btn} onClick={closeLabel}>
+                Adicionar depois
+              </button>
+            </>
+          )}
+          <button className={styles.btn} type="submit">
+            Cadastrar
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -1,25 +1,18 @@
-.formControl {
-  margin-bottom: 1rem;
-}
-
 .formControl label {
-  color: rgb(0, 0, 0);
-}
-
-.inputWrapper {
-  position: relative;
+  color: black;
 }
 
 .inputWrapper input {
   padding: 7px;
+  margin: 0.5em 0;
   border-radius: 4px;
-  margin: 1em;
 }
 
 .inputButton {
   position: absolute;
-  right: 35px;
-  top: 45%;
+  right: 87.5%;
+  top: 63%;
+
   transform: translateY(-50%);
   cursor: pointer;
 }
