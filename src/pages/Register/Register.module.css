@@ -1,80 +1,44 @@
-/* Login.module.css */
-.register {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 2em;
-  background-color: #a8a6a6;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.register h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #333;
-}
-
-.register form {
+.namesContainer {
   display: flex;
-  flex-direction: column;
 }
 
-.register label {
-  margin-bottom: 15px;
-  font-size: 14px;
-  color: #555;
+.namesContainer input {
+  margin-right: 0.5em;
 }
 
-.register input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ddd;
+.register {
+  margin: 2em 4em;
+}
+
+.formContainer {
+  margin-top: 2em;
+}
+
+p {
+  margin-top: 0.5em;
+  color: black;
+}
+
+.btn {
+  background-color: #b4e9e4;
+  color: black;
+  padding: 0.5em;
   border-radius: 5px;
-  font-size: 16px;
+  width: 150px;
 }
 
-.register input:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-.register .btn {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
+.passwordToggle {
+  background-color: transparent;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
-  margin-top: 10px;
 }
 
-.register .btn:hover {
-  background-color: #0056b3;
+.photoContainer {
+  display: block;
+  width: 200px;
 }
 
-.register button {
-  margin-top: 10px;
-  background: none;
-  border: none;
-  color: #007bff;
-  cursor: pointer;
-  font-size: 14px;
-  text-decoration: underline;
-}
-
-.register button:hover {
-  color: #ffffff;
-}
-
-.register .error {
-  color: red;
-  margin-top: 10px;
-  font-size: 14px;
-  text-align: center;
+.photoContainer input,
+button {
+  margin: 0.5em;
 }
