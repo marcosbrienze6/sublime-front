@@ -9,11 +9,6 @@
 }
 
 .inputButton {
-  position: absolute;
-  right: 87.5%;
-  top: 63%;
-
-  transform: translateY(-50%);
   cursor: pointer;
 }
 

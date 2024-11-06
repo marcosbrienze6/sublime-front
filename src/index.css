@@ -67,3 +67,22 @@ body {
   padding: 8px;
   box-sizing: border-box;
 }
+
+/* CSS DA SEARCH BAR */
+
+.search-bar input {
+  padding: 5px;
+  transition: 0.2s ease;
+
+  width: 250px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.search-bar input:focus {
+  transform: scale(1.1);
+  border: 1px solid black;
+}

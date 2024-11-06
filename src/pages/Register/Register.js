@@ -13,10 +13,16 @@ import { Eye, EyeSlash } from "phosphor-react";
 const Register = () => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
+
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
+
+  const [userCPF, setUserCPF] = useState("");
+  const [userBirth, setUserBirth] = useState("");
+
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
   const [imageFile, setImageFile] = useState(null);
   const [photoURL, setPhotoURL] = useState(true);
 
@@ -51,6 +57,7 @@ const Register = () => {
     }
   };
 
+  //Valida o formulário
   const validateForm = () => {
     const newErrors = {};
 
@@ -62,8 +69,24 @@ const Register = () => {
       newErrors.lastName = "O sobrenome é obrigatório.";
     }
 
-    if (phoneNumber.length === 0 || phoneNumber < 11) {
-      newErrors.phoneNumber = "Insira um número válido.";
+    if (userBirth.length === 0) {
+      newErrors.userBirth = "Precisamos saber se você é de maior.";
+    }
+
+    switch (true) {
+      case !phoneNumber:
+        newErrors.phoneNumber = "O número de telefone é obrigatório.";
+        break;
+      case phoneNumber.length < 11:
+        newErrors.phoneNumber = "Insira um número de telefone válido.";
+    }
+
+    switch (true) {
+      case !userCPF:
+        newErrors.userCPF = "O número de CPF é obrigatório";
+        break;
+      case userCPF.length < 12:
+        newErrors.userCPF = "Insira um CPF válido.";
     }
 
     switch (true) {
@@ -129,6 +152,13 @@ const Register = () => {
     }
   };
 
+  const handleCPFChange = (e) => {
+    setUserCPF(e.target.value);
+    if (errors.userCPF) {
+      setErrors({ ...errors, userCPF: "" });
+    }
+  };
+
   //Reseta os erros se não tiver nenhum
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -136,6 +166,15 @@ const Register = () => {
       setErrors({ ...errors, email: "" });
     }
   };
+
+  //Reseta os erros se não tiver nenhum
+  const handleBirthChange = (e) => {
+    setUserBirth(e.target.value);
+    if (errors.userBirth) {
+      setErrors({ ...errors, userBirth: "" });
+    }
+  };
+
   //Reseta os erros se não tiver nenhum
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
@@ -190,6 +229,14 @@ const Register = () => {
           error={errors.email}
         />
         <FormControl
+          id="birth"
+          label="Data de Nascimento"
+          type="date"
+          value={userBirth}
+          onChange={handleBirthChange}
+          error={errors.userBirth}
+        />
+        <FormControl
           id="phone"
           label="Celular"
           type="tel"
@@ -198,6 +245,16 @@ const Register = () => {
           pattern="[0-9]{11}"
           onChange={handlePhoneChange}
           error={errors.phoneNumber}
+        />
+        <FormControl
+          id="CPF"
+          label="CPF"
+          type="text"
+          value={userCPF}
+          placeholder="Ex: 123.456.789-00"
+          pattern="{12}"
+          onChange={handleCPFChange}
+          error={errors.userCPF}
         />
         CEP
         <Address />
@@ -223,9 +280,9 @@ const Register = () => {
               className={styles.passwordToggle}
             >
               {isPasswordVisible ? (
-                <Eye color="black" />
+                <Eye size={20} color="black" />
               ) : (
-                <EyeSlash color="black" />
+                <EyeSlash size={20} color="black" />
               )}
             </button>
           }
