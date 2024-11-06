@@ -23,8 +23,9 @@ const FormControl = ({
           onChange={onChange}
           className={error ? styles.inputError : ""}
         />
-        {button && <div className={styles.inputButton}>{button}</div>}
       </div>
+
+      <div className={styles.inputButton}> {button}</div>
       {error && <div className={styles.error}>{error}</div>}
     </div>
   );

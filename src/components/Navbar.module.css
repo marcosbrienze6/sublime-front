@@ -118,6 +118,10 @@ h5 {
   background-color: #ccc;
 }
 
+.modalContent a {
+  text-decoration: none;
+}
+
 .options {
   color: black;
   padding: 15px;
