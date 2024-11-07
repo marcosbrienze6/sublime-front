@@ -18,6 +18,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
 
   const [userCPF, setUserCPF] = useState("");
+  const [gender, setGender] = useState("");
   const [userBirth, setUserBirth] = useState("");
 
   const [password, setPassword] = useState("");
@@ -31,6 +32,11 @@ const Register = () => {
 
   const navigate = useNavigate();
 
+  const handleGender = (e) => {
+    setGender(e.target.value);
+  };
+
+  //Lógica pra senha ficar visível
   const togglePasswordVisible = () => {
     setPasswordVisible(!isPasswordVisible);
   };
@@ -236,6 +242,14 @@ const Register = () => {
           onChange={handleBirthChange}
           error={errors.userBirth}
         />
+        <form className="gender">
+          <label>Gênero:</label>
+          <select id="gender" onChange={handleGender} name="gender">
+            <option value="select">Selecione</option>
+            <option value="male">Masculino</option>
+            <option value="female">Feminino</option>
+          </select>
+        </form>
         <FormControl
           id="phone"
           label="Celular"
