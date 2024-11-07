@@ -86,3 +86,33 @@ body {
   transform: scale(1.1);
   border: 1px solid black;
 }
+
+/* GENERO REGISTER */
+
+.gender {
+  margin: 1em 0;
+}
+
+.gender select {
+  margin: 0 0.5em;
+  padding: 4px;
+}
+
+/* PROFILE CSS */
+
+.profile-container {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid black;
+  padding: 1em 10em;
+
+  box-sizing: border-box;
+}
+
+.spanBox {
+  border: 1px solid black;
+  background-color: #ccc;
+  margin: 1em 0;
+  padding: 1.5em;
+  border-radius: 5px;
+}

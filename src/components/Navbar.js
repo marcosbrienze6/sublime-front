@@ -108,22 +108,23 @@ const Navbar = () => {
         <div className={`${styles.modal} ${modalOpen ? styles.open : ""}`}>
           <div className={styles.modalContent}>
             <h2>Eai dog</h2>
-
-            <button>
-              <UserCircle /> Ver meu perfil
-            </button>
-            <button>
-              <Bell /> Mensagens
-            </button>
-            <button>
-              <Bag /> Minhas compras
-            </button>
-            <button>
-              <Gear /> Configurações
-            </button>
-            <button>
-              <SignOut /> Sair
-            </button>
+            <NavLink to="/profile">
+              <button>
+                <UserCircle /> Ver meu perfil
+              </button>
+              <button>
+                <Bell /> Mensagens
+              </button>
+              <button>
+                <Bag /> Minhas compras
+              </button>
+              <button>
+                <Gear /> Configurações
+              </button>
+              <button>
+                <SignOut /> Sair
+              </button>
+            </NavLink>
           </div>
         </div>
       </NavLink>
