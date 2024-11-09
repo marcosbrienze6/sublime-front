@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 //Hooks
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 //CSS
 import styles from "./Login.module.css";
@@ -123,7 +123,9 @@ const Login = ({ closeModal }) => {
         <button className={styles.btn} type="submit">
           Entrar
         </button>
-
+        <p>
+          Não tem uma conta? <Link to="/register">Crie uma</Link>
+        </p>
         <p className={styles.separation}>Ou entre com</p>
         <div className={styles.socialMedia}>
           <div className={styles.google}>
