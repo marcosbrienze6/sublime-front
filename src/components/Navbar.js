@@ -13,6 +13,7 @@ import {
   UserCircle,
   Bell,
   Bag,
+  Money,
 } from "phosphor-react";
 import Login from "./Login";
 
@@ -59,13 +60,13 @@ const Navbar = () => {
         <NavLink to="/shop" className={styles.navbarItem}>
           Shop
         </NavLink>
-        <NavLink to="/vender" className={styles.navbarItem}>
+        <NavLink to="/store" className={styles.navbarItem}>
           Vender
         </NavLink>
 
         <SearchBar />
 
-        <NavLink to={"/vender"}>
+        <NavLink to={"/store"}>
           <ShoppingBagOpen color="black" size={30} />
         </NavLink>
 
@@ -117,6 +118,9 @@ const Navbar = () => {
               </button>
               <button>
                 <Bag /> Minhas compras
+              </button>
+              <button>
+                <Money /> Minha loja
               </button>
               <button>
                 <Gear /> Configurações

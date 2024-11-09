@@ -11,6 +11,7 @@ import Login from "./components/Login";
 import Home from "./pages/Home/Home";
 import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile";
+import Store from "./pages/Store/Store";
 function App() {
   return (
     <div className="App">
@@ -18,7 +19,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-
+          <Route path="/store" element={<Store />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
